@@ -1,0 +1,14 @@
+{
+  "profiles": {
+    "capaPresentacion": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "MY_USER": "root",
+        "MY_PASSWORD": "9dahafiMaria",
+        "MY_PORT": "3305",
+        "MY_DB": "curso_vb",
+        "MY_SERVER": "127.0.0.1"
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "capaDatos": {
+      "commandName": "Project",
+      "remoteDebugEnabled": false
+    }
+  }
+}
