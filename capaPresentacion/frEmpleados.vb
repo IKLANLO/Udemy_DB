@@ -18,7 +18,7 @@ Public Class frEmpleados
 
     Private Sub lnkFoto_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lnkFoto.LinkClicked
         'indicamos los tipos de archivo admitidos en el cuadro de diálogo'
-        openFoto.Filter = "jpg files (*.jpg)|*.jpg|png files (*.png)|*.png"
+        openFoto.Filter = "jpg files (*.jpg)|*.jpg|png files (*.png)|*.png|all files (*.jpg, *.png)|*.png;*.jpg"
 
         'abrimos el cuadro'
         openFoto.ShowDialog()
