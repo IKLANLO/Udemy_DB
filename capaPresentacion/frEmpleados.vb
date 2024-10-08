@@ -43,7 +43,12 @@ Public Class frEmpleados
         empleado.Foto = picFoto.ImageLocation
 
         NegocioEmpleado.ValidarDatos(empleado)
+
+        'probamos la conexión a la DB'
         NegocioEmpleado.pruebaMySql()
+
+        'insertamos los datos en la DB'
+        NegocioEmpleado.InsertarEmpleado(empleado)
 
     End Sub
 
