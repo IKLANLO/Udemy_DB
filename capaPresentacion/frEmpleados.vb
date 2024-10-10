@@ -50,6 +50,9 @@ Public Class frEmpleados
         'insertamos los datos en la DB'
         NegocioEmpleado.InsertarEmpleado(empleado)
 
+        'actualizamos el dataGrid
+        gridDatos.DataSource = NegocioEmpleado.ListarEmpleados().Tables("empleados")
+
     End Sub
 
     Private Sub TextBox_TextChanged(sender As Object, e As EventArgs) Handles MyBase.Load, txtNombre.TextChanged, txtApellido.TextChanged, txtId.TextChanged, openFoto.FileOk
@@ -93,4 +96,9 @@ Public Class frEmpleados
             i += 1
         Next
     End Function
+
+    Private Sub frEmpleados_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        gridDatos.DataSource = NegocioEmpleado.ListarEmpleados().Tables("empleados")
+    End Sub
+
 End Class

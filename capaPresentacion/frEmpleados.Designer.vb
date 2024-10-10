@@ -22,6 +22,7 @@ Partial Class frEmpleados
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        components = New ComponentModel.Container()
         txtNombre = New TextBox()
         txtApellido = New TextBox()
         txtId = New NumericUpDown()
@@ -35,27 +36,31 @@ Partial Class frEmpleados
         btnEliminar = New Button()
         btnGuardar = New Button()
         openFoto = New OpenFileDialog()
+        gridDatos = New DataGridView()
+        CNEmpleadoBindingSource = New BindingSource(components)
         CType(txtId, ComponentModel.ISupportInitialize).BeginInit()
         CType(picFoto, ComponentModel.ISupportInitialize).BeginInit()
+        CType(gridDatos, ComponentModel.ISupportInitialize).BeginInit()
+        CType(CNEmpleadoBindingSource, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' txtNombre
         ' 
-        txtNombre.Location = New Point(187, 98)
+        txtNombre.Location = New Point(99, 78)
         txtNombre.Name = "txtNombre"
         txtNombre.Size = New Size(257, 27)
         txtNombre.TabIndex = 0
         ' 
         ' txtApellido
         ' 
-        txtApellido.Location = New Point(187, 143)
+        txtApellido.Location = New Point(99, 123)
         txtApellido.Name = "txtApellido"
         txtApellido.Size = New Size(257, 27)
         txtApellido.TabIndex = 1
         ' 
         ' txtId
         ' 
-        txtId.Location = New Point(187, 55)
+        txtId.Location = New Point(99, 35)
         txtId.Name = "txtId"
         txtId.Size = New Size(62, 27)
         txtId.TabIndex = 2
@@ -64,7 +69,7 @@ Partial Class frEmpleados
         ' 
         picFoto.BackColor = SystemColors.ActiveBorder
         picFoto.BorderStyle = BorderStyle.FixedSingle
-        picFoto.Location = New Point(187, 187)
+        picFoto.Location = New Point(99, 167)
         picFoto.Name = "picFoto"
         picFoto.Size = New Size(140, 129)
         picFoto.TabIndex = 3
@@ -73,7 +78,7 @@ Partial Class frEmpleados
         ' lnkFoto
         ' 
         lnkFoto.AutoSize = True
-        lnkFoto.Location = New Point(188, 322)
+        lnkFoto.Location = New Point(100, 302)
         lnkFoto.Name = "lnkFoto"
         lnkFoto.Size = New Size(85, 20)
         lnkFoto.TabIndex = 4
@@ -83,7 +88,7 @@ Partial Class frEmpleados
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Location = New Point(117, 58)
+        Label1.Location = New Point(29, 38)
         Label1.Name = "Label1"
         Label1.Size = New Size(22, 20)
         Label1.TabIndex = 5
@@ -92,7 +97,7 @@ Partial Class frEmpleados
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Location = New Point(117, 101)
+        Label2.Location = New Point(29, 81)
         Label2.Name = "Label2"
         Label2.Size = New Size(64, 20)
         Label2.TabIndex = 6
@@ -101,7 +106,7 @@ Partial Class frEmpleados
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Location = New Point(117, 146)
+        Label3.Location = New Point(29, 126)
         Label3.Name = "Label3"
         Label3.Size = New Size(66, 20)
         Label3.TabIndex = 7
@@ -110,7 +115,7 @@ Partial Class frEmpleados
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Location = New Point(117, 187)
+        Label4.Location = New Point(29, 167)
         Label4.Name = "Label4"
         Label4.Size = New Size(39, 20)
         Label4.TabIndex = 8
@@ -118,7 +123,7 @@ Partial Class frEmpleados
         ' 
         ' btnNuevo
         ' 
-        btnNuevo.Location = New Point(117, 377)
+        btnNuevo.Location = New Point(29, 357)
         btnNuevo.Name = "btnNuevo"
         btnNuevo.Size = New Size(94, 29)
         btnNuevo.TabIndex = 9
@@ -127,7 +132,7 @@ Partial Class frEmpleados
         ' 
         ' btnEliminar
         ' 
-        btnEliminar.Location = New Point(233, 377)
+        btnEliminar.Location = New Point(145, 357)
         btnEliminar.Name = "btnEliminar"
         btnEliminar.Size = New Size(94, 29)
         btnEliminar.TabIndex = 10
@@ -136,18 +141,36 @@ Partial Class frEmpleados
         ' 
         ' btnGuardar
         ' 
-        btnGuardar.Location = New Point(350, 377)
+        btnGuardar.Location = New Point(262, 357)
         btnGuardar.Name = "btnGuardar"
         btnGuardar.Size = New Size(94, 29)
         btnGuardar.TabIndex = 11
         btnGuardar.Text = "Guardar"
         btnGuardar.UseVisualStyleBackColor = True
         ' 
+        ' openFoto
+        ' 
+        ' 
+        ' gridDatos
+        ' 
+        gridDatos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        gridDatos.Location = New Point(395, 35)
+        gridDatos.Name = "gridDatos"
+        gridDatos.RowHeadersWidth = 51
+        gridDatos.RowTemplate.Height = 29
+        gridDatos.Size = New Size(505, 351)
+        gridDatos.TabIndex = 12
+        ' 
+        ' CNEmpleadoBindingSource
+        ' 
+        CNEmpleadoBindingSource.DataSource = GetType(capaNegocio.CNEmpleado)
+        ' 
         ' frEmpleados
         ' 
         AutoScaleDimensions = New SizeF(8F, 20F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(800, 450)
+        ClientSize = New Size(940, 429)
+        Controls.Add(gridDatos)
         Controls.Add(btnGuardar)
         Controls.Add(btnEliminar)
         Controls.Add(btnNuevo)
@@ -164,6 +187,8 @@ Partial Class frEmpleados
         Text = "Form1"
         CType(txtId, ComponentModel.ISupportInitialize).EndInit()
         CType(picFoto, ComponentModel.ISupportInitialize).EndInit()
+        CType(gridDatos, ComponentModel.ISupportInitialize).EndInit()
+        CType(CNEmpleadoBindingSource, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -181,5 +206,7 @@ Partial Class frEmpleados
     Friend WithEvents btnEliminar As Button
     Friend WithEvents btnGuardar As Button
     Friend WithEvents openFoto As OpenFileDialog
+    Friend WithEvents gridDatos As DataGridView
+    Friend WithEvents CNEmpleadoBindingSource As BindingSource
 
 End Class

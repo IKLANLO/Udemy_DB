@@ -44,5 +44,24 @@ Public Class CDEmpleado
 
         conexion.Close()
     End Sub
+    Public Function Listar() As DataSet
+        'guardamos la lista de empleados de la DB'
+        Dim conexion As New MySqlConnection(_cadenaConexion)
+
+        Try
+            conexion.Open()
+            Dim query As String = "SELECT * FROM `empleados` LIMIT 1000;"
+            Dim adaptador As New MySqlDataAdapter(query, conexion)
+            Dim dataSet As New DataSet
+
+            adaptador.Fill(dataSet, "empleados") 'llenamos el dataSet con los datos del adaptador, y lo identificamos como tabla empleados
+            Return dataSet
+
+        Catch ex As Exception
+            MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK)
+        End Try
+
+        conexion.Close()
+    End Function
 
 End Class

@@ -24,4 +24,9 @@ Public Class CNEmpleado
         DatosEmpleado.Insertar(empleado)
     End Sub
 
+    Public Function ListarEmpleados() As DataSet
+        Return DatosEmpleado.Listar()
+
+    End Function
+
 End Class
