@@ -47,8 +47,13 @@ Public Class frEmpleados
         'probamos la conexión a la DB'
         NegocioEmpleado.pruebaMySql()
 
-        'insertamos los datos en la DB'
-        NegocioEmpleado.InsertarEmpleado(empleado)
+        If (empleado.Id = 0) Then 'revisar validaciones, no permite insertar nuevos empleados
+            'insertamos los datos en la DB'
+            NegocioEmpleado.InsertarEmpleado(empleado)
+        Else
+            NegocioEmpleado.ModificarEmpleado(empleado)
+        End If
+
 
         'actualizamos el dataGrid
         gridDatos.DataSource = NegocioEmpleado.ListarEmpleados().Tables("empleados")
@@ -57,7 +62,7 @@ Public Class frEmpleados
 
     Private Sub TextBox_TextChanged(sender As Object, e As EventArgs) Handles MyBase.Load, txtNombre.TextChanged, txtApellido.TextChanged, txtId.TextChanged, openFoto.FileOk
         'controlamos que sólo se activen los botones de guardar y eliminar si están los campos rellenos'
-        If txtId.Value = 0 Or txtNombre.Text Is "" Or txtApellido.Text Is "" Or String.IsNullOrEmpty(openFoto.FileName) Then
+        If txtNombre.Text Is "" Or txtApellido.Text Is "" Or String.IsNullOrEmpty(picFoto.ImageLocation) Then
             btnGuardar.Enabled = False
             btnEliminar.Enabled = False
 
@@ -102,8 +107,8 @@ Public Class frEmpleados
         gridDatos.DataSource = NegocioEmpleado.ListarEmpleados().Tables("empleados")
     End Sub
 
-    Private Sub gridDatos_CellContentDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles gridDatos.CellContentDoubleClick
-        'tras hacer doble click en una casilla se modificarán los datos
+    Private Sub gridDatos_RowHeaderMouseDoubleClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles gridDatos.RowHeaderMouseDoubleClick
+        'tras hacer doble click en una fila se modificarán los datos
         ReviewBackColor()
         'vaciamos el formulario'
         txtNombre.Text = gridDatos.CurrentRow.Cells("nombre").Value
@@ -115,10 +120,9 @@ Public Class frEmpleados
                 picFoto.BackColor = whiteColor 'aseguramos que el fondo sea blanco, por si hay imágenes sin fondo
                 picFoto.SizeMode = PictureBoxSizeMode.StretchImage 'ajustamos la imagen al contenedor
                 picFoto.Load(gridDatos.CurrentRow.Cells("foto").Value)
-
             End If
         End If
 
-
+        btnGuardar.Enabled = True
     End Sub
 End Class

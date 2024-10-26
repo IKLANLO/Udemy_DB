@@ -62,9 +62,11 @@ Partial Class frEmpleados
         ' 
         ' txtId
         ' 
+        txtId.Enabled = False
         txtId.Location = New Point(87, 26)
         txtId.Margin = New Padding(3, 2, 3, 2)
         txtId.Name = "txtId"
+        txtId.ReadOnly = True
         txtId.Size = New Size(54, 23)
         txtId.TabIndex = 2
         ' 

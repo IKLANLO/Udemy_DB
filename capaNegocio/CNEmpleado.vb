@@ -8,7 +8,7 @@ Public Class CNEmpleado
         'devolverá true o false según se validen los datos del objeto CEEmpleado pasado'
         Dim Resultado As Boolean = True
 
-        If empleado.Id = 0 Or empleado.Nombre = "" Or empleado.Apellido = "" Or empleado.Foto = "" Then
+        If empleado.Nombre = "" Or empleado.Apellido = "" Or empleado.Foto = "" Then
             Resultado = False
             MessageBox.Show("Todos los datos son obligatorios", "Error", MessageBoxButtons.OK)
         End If
@@ -22,6 +22,10 @@ Public Class CNEmpleado
 
     Public Sub InsertarEmpleado(ByVal empleado As CEEmpleado)
         DatosEmpleado.Insertar(empleado)
+    End Sub
+
+    Public Sub ModificarEmpleado(ByVal empleado As CEEmpleado)
+        DatosEmpleado.Modificar(empleado)
     End Sub
 
     Public Function ListarEmpleados() As DataSet

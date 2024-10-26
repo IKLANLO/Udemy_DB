@@ -1,5 +1,6 @@
 ﻿Imports MySql.Data.MySqlClient
 Imports capaEntidad
+Imports Mysqlx.Crud
 
 Public Class CDEmpleado
     'importamos las variables de entorno guardadas en las propiedades de capaDatos'
@@ -44,6 +45,27 @@ Public Class CDEmpleado
 
         conexion.Close()
     End Sub
+
+    Public Sub Modificar(ByVal empleado As CEEmpleado)
+        'guardamos en empleado en la DB'
+        Dim conexion As New MySqlConnection(_cadenaConexion)
+
+        Try
+            conexion.Open()
+            'empleado.Foto se guarda así en la query para añadir los / en la ruta'
+            Dim empleadoFoto As String = MySql.Data.MySqlClient.MySqlHelper.EscapeString(empleado.Foto)
+            Dim query As String = "UPDATE `empleados` SET `nombre`='" & empleado.Nombre & "', `apellido`='" & empleado.Apellido & "', `foto`='" & empleadoFoto & "' WHERE  `id`=" & empleado.Id & ";"
+            Dim comando As New MySqlCommand(query, conexion)
+            comando.ExecuteReader() 'ejecutamos el comando insert'
+            MessageBox.Show("Contacto editado correctamente", "Info", MessageBoxButtons.OK)
+        Catch ex As Exception
+            MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK)
+            Exit Sub 'cerramos el evento'
+        End Try
+
+        conexion.Close()
+    End Sub
+
     Public Function Listar() As DataSet
         'guardamos la lista de empleados de la DB'
         Dim conexion As New MySqlConnection(_cadenaConexion)
