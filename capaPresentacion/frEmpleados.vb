@@ -14,6 +14,9 @@ Public Class frEmpleados
         txtApellido.Clear()
         txtId.Value = 0
         picFoto.Image = Nothing
+        openFoto.FileName = ""
+
+        ReviewBackColor()
     End Sub
 
     Private Sub lnkFoto_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles lnkFoto.LinkClicked
@@ -64,13 +67,8 @@ Public Class frEmpleados
         'creamos una instancia de CEEmpleado'
         Dim empleado As New CEEmpleado()
 
-        'guardamos los datos del formulario en esa instancia'
+        'guardamos el id del formulario en esa instancia'
         empleado.Id = txtId.Value
-        'empleado.Nombre = txtNombre.Text
-        'empleado.Apellido = txtApellido.Text
-        'empleado.Foto = picFoto.ImageLocation
-
-        'NegocioEmpleado.ValidarDatos(empleado)
 
         'probamos la conexión a la DB'
         NegocioEmpleado.pruebaMySql()
@@ -88,21 +86,21 @@ Public Class frEmpleados
 
         'actualizamos el dataGrid
         gridDatos.DataSource = NegocioEmpleado.ListarEmpleados().Tables("empleados")
+
+        ReviewBackColor()
     End Sub
 
     Private Sub TextBox_TextChanged(sender As Object, e As EventArgs) Handles MyBase.Load, txtNombre.TextChanged, txtApellido.TextChanged, txtId.TextChanged, openFoto.FileOk
         'controlamos que sólo se activen los botones de guardar y eliminar si están los campos rellenos'
-        If txtNombre.Text Is "" Or txtApellido.Text Is "" Or String.IsNullOrEmpty(picFoto.ImageLocation) Then
+        If txtNombre.Text Is "" Or txtApellido.Text Is "" Or String.IsNullOrEmpty(openFoto.FileName) Then
             btnGuardar.Enabled = False
             btnEliminar.Enabled = False
-
-            ReviewBackColor()
         Else
             btnGuardar.Enabled = True
             btnEliminar.Enabled = True
-
-            ReviewBackColor()
         End If
+
+        ReviewBackColor()
     End Sub
 
     Private Function ReviewBackColor()
