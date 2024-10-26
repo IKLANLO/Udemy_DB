@@ -98,7 +98,27 @@ Public Class frEmpleados
     End Function
 
     Private Sub frEmpleados_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'al cargar el formulario se rellenan los datos procedentes de la DB
         gridDatos.DataSource = NegocioEmpleado.ListarEmpleados().Tables("empleados")
     End Sub
 
+    Private Sub gridDatos_CellContentDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles gridDatos.CellContentDoubleClick
+        'tras hacer doble click en una casilla se modificarán los datos
+        ReviewBackColor()
+        'vaciamos el formulario'
+        txtNombre.Text = gridDatos.CurrentRow.Cells("nombre").Value
+        txtApellido.Text = gridDatos.CurrentRow.Cells("apellido").Value
+        txtId.Value = gridDatos.CurrentRow.Cells("id").Value
+
+        If gridDatos.CurrentRow.Cells("foto").Value <> "" Then
+            If System.IO.File.Exists(gridDatos.CurrentRow.Cells("foto").Value) Then 'revisamos si la ruta es válida aún
+                picFoto.BackColor = whiteColor 'aseguramos que el fondo sea blanco, por si hay imágenes sin fondo
+                picFoto.SizeMode = PictureBoxSizeMode.StretchImage 'ajustamos la imagen al contenedor
+                picFoto.Load(gridDatos.CurrentRow.Cells("foto").Value)
+
+            End If
+        End If
+
+
+    End Sub
 End Class

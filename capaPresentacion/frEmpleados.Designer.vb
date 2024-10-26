@@ -46,41 +46,45 @@ Partial Class frEmpleados
         ' 
         ' txtNombre
         ' 
-        txtNombre.Location = New Point(99, 78)
+        txtNombre.Location = New Point(87, 58)
+        txtNombre.Margin = New Padding(3, 2, 3, 2)
         txtNombre.Name = "txtNombre"
-        txtNombre.Size = New Size(257, 27)
+        txtNombre.Size = New Size(225, 23)
         txtNombre.TabIndex = 0
         ' 
         ' txtApellido
         ' 
-        txtApellido.Location = New Point(99, 123)
+        txtApellido.Location = New Point(87, 92)
+        txtApellido.Margin = New Padding(3, 2, 3, 2)
         txtApellido.Name = "txtApellido"
-        txtApellido.Size = New Size(257, 27)
+        txtApellido.Size = New Size(225, 23)
         txtApellido.TabIndex = 1
         ' 
         ' txtId
         ' 
-        txtId.Location = New Point(99, 35)
+        txtId.Location = New Point(87, 26)
+        txtId.Margin = New Padding(3, 2, 3, 2)
         txtId.Name = "txtId"
-        txtId.Size = New Size(62, 27)
+        txtId.Size = New Size(54, 23)
         txtId.TabIndex = 2
         ' 
         ' picFoto
         ' 
         picFoto.BackColor = SystemColors.ActiveBorder
         picFoto.BorderStyle = BorderStyle.FixedSingle
-        picFoto.Location = New Point(99, 167)
+        picFoto.Location = New Point(87, 125)
+        picFoto.Margin = New Padding(3, 2, 3, 2)
         picFoto.Name = "picFoto"
-        picFoto.Size = New Size(140, 129)
+        picFoto.Size = New Size(123, 97)
         picFoto.TabIndex = 3
         picFoto.TabStop = False
         ' 
         ' lnkFoto
         ' 
         lnkFoto.AutoSize = True
-        lnkFoto.Location = New Point(100, 302)
+        lnkFoto.Location = New Point(88, 226)
         lnkFoto.Name = "lnkFoto"
-        lnkFoto.Size = New Size(85, 20)
+        lnkFoto.Size = New Size(67, 15)
         lnkFoto.TabIndex = 4
         lnkFoto.TabStop = True
         lnkFoto.Text = "Seleccionar"
@@ -88,62 +92,65 @@ Partial Class frEmpleados
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Location = New Point(29, 38)
+        Label1.Location = New Point(25, 28)
         Label1.Name = "Label1"
-        Label1.Size = New Size(22, 20)
+        Label1.Size = New Size(17, 15)
         Label1.TabIndex = 5
         Label1.Text = "Id"
         ' 
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Location = New Point(29, 81)
+        Label2.Location = New Point(25, 61)
         Label2.Name = "Label2"
-        Label2.Size = New Size(64, 20)
+        Label2.Size = New Size(51, 15)
         Label2.TabIndex = 6
         Label2.Text = "Nombre"
         ' 
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Location = New Point(29, 126)
+        Label3.Location = New Point(25, 94)
         Label3.Name = "Label3"
-        Label3.Size = New Size(66, 20)
+        Label3.Size = New Size(51, 15)
         Label3.TabIndex = 7
         Label3.Text = "Apellido"
         ' 
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Location = New Point(29, 167)
+        Label4.Location = New Point(25, 125)
         Label4.Name = "Label4"
-        Label4.Size = New Size(39, 20)
+        Label4.Size = New Size(31, 15)
         Label4.TabIndex = 8
         Label4.Text = "Foto"
         ' 
         ' btnNuevo
         ' 
-        btnNuevo.Location = New Point(29, 357)
+        btnNuevo.Location = New Point(25, 268)
+        btnNuevo.Margin = New Padding(3, 2, 3, 2)
         btnNuevo.Name = "btnNuevo"
-        btnNuevo.Size = New Size(94, 29)
+        btnNuevo.Size = New Size(82, 22)
         btnNuevo.TabIndex = 9
         btnNuevo.Text = "Nuevo"
         btnNuevo.UseVisualStyleBackColor = True
         ' 
         ' btnEliminar
         ' 
-        btnEliminar.Location = New Point(145, 357)
+        btnEliminar.Location = New Point(127, 268)
+        btnEliminar.Margin = New Padding(3, 2, 3, 2)
         btnEliminar.Name = "btnEliminar"
-        btnEliminar.Size = New Size(94, 29)
+        btnEliminar.Size = New Size(82, 22)
         btnEliminar.TabIndex = 10
         btnEliminar.Text = "Eliminar"
         btnEliminar.UseVisualStyleBackColor = True
         ' 
         ' btnGuardar
         ' 
-        btnGuardar.Location = New Point(262, 357)
+        btnGuardar.Location = New Point(229, 268)
+        btnGuardar.Margin = New Padding(3, 2, 3, 2)
         btnGuardar.Name = "btnGuardar"
-        btnGuardar.Size = New Size(94, 29)
+        btnGuardar.Size = New Size(82, 22)
         btnGuardar.TabIndex = 11
         btnGuardar.Text = "Guardar"
         btnGuardar.UseVisualStyleBackColor = True
@@ -154,11 +161,13 @@ Partial Class frEmpleados
         ' gridDatos
         ' 
         gridDatos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        gridDatos.Location = New Point(395, 35)
+        gridDatos.Location = New Point(346, 26)
+        gridDatos.Margin = New Padding(3, 2, 3, 2)
         gridDatos.Name = "gridDatos"
+        gridDatos.ReadOnly = True
         gridDatos.RowHeadersWidth = 51
         gridDatos.RowTemplate.Height = 29
-        gridDatos.Size = New Size(505, 351)
+        gridDatos.Size = New Size(442, 263)
         gridDatos.TabIndex = 12
         ' 
         ' CNEmpleadoBindingSource
@@ -167,9 +176,9 @@ Partial Class frEmpleados
         ' 
         ' frEmpleados
         ' 
-        AutoScaleDimensions = New SizeF(8F, 20F)
+        AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
-        ClientSize = New Size(940, 429)
+        ClientSize = New Size(822, 322)
         Controls.Add(gridDatos)
         Controls.Add(btnGuardar)
         Controls.Add(btnEliminar)
@@ -183,6 +192,7 @@ Partial Class frEmpleados
         Controls.Add(txtId)
         Controls.Add(txtApellido)
         Controls.Add(txtNombre)
+        Margin = New Padding(3, 2, 3, 2)
         Name = "frEmpleados"
         Text = "Form1"
         CType(txtId, ComponentModel.ISupportInitialize).EndInit()
