@@ -28,6 +28,10 @@ Public Class CNEmpleado
         DatosEmpleado.Modificar(empleado)
     End Sub
 
+    Public Sub EliminarEmpleado(ByVal empleado As CEEmpleado)
+        DatosEmpleado.Eliminar(empleado)
+    End Sub
+
     Public Function ListarEmpleados() As DataSet
         Return DatosEmpleado.Listar()
 

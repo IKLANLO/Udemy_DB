@@ -47,7 +47,7 @@ Public Class frEmpleados
         'probamos la conexión a la DB'
         NegocioEmpleado.pruebaMySql()
 
-        If (empleado.Id = 0) Then 'revisar validaciones, no permite insertar nuevos empleados
+        If (empleado.Id = 0) Then
             'insertamos los datos en la DB'
             NegocioEmpleado.InsertarEmpleado(empleado)
         Else
@@ -58,6 +58,33 @@ Public Class frEmpleados
         'actualizamos el dataGrid
         gridDatos.DataSource = NegocioEmpleado.ListarEmpleados().Tables("empleados")
 
+    End Sub
+
+    Private Sub btnEliminar_Click(sender As Object, e As EventArgs) Handles btnEliminar.Click
+        'creamos una instancia de CEEmpleado'
+        Dim empleado As New CEEmpleado()
+
+        'guardamos los datos del formulario en esa instancia'
+        empleado.Id = txtId.Value
+        empleado.Nombre = txtNombre.Text
+        empleado.Apellido = txtApellido.Text
+        empleado.Foto = picFoto.ImageLocation
+
+        NegocioEmpleado.ValidarDatos(empleado)
+
+        'probamos la conexión a la DB'
+        NegocioEmpleado.pruebaMySql()
+
+        If (empleado.Id <> 0) Then
+            'insertamos los datos en la DB'
+            NegocioEmpleado.EliminarEmpleado(empleado)
+        Else
+            MessageBox.Show("Error al eliminar empleado, contacte con su administrador.", "Error")
+        End If
+
+
+        'actualizamos el dataGrid
+        gridDatos.DataSource = NegocioEmpleado.ListarEmpleados().Tables("empleados")
     End Sub
 
     Private Sub TextBox_TextChanged(sender As Object, e As EventArgs) Handles MyBase.Load, txtNombre.TextChanged, txtApellido.TextChanged, txtId.TextChanged, openFoto.FileOk
@@ -110,6 +137,7 @@ Public Class frEmpleados
     Private Sub gridDatos_RowHeaderMouseDoubleClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles gridDatos.RowHeaderMouseDoubleClick
         'tras hacer doble click en una fila se modificarán los datos
         ReviewBackColor()
+
         'vaciamos el formulario'
         txtNombre.Text = gridDatos.CurrentRow.Cells("nombre").Value
         txtApellido.Text = gridDatos.CurrentRow.Cells("apellido").Value
@@ -124,5 +152,6 @@ Public Class frEmpleados
         End If
 
         btnGuardar.Enabled = True
+        btnEliminar.Enabled = True
     End Sub
 End Class
