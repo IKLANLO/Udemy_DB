@@ -66,11 +66,11 @@ Public Class frEmpleados
 
         'guardamos los datos del formulario en esa instancia'
         empleado.Id = txtId.Value
-        empleado.Nombre = txtNombre.Text
-        empleado.Apellido = txtApellido.Text
-        empleado.Foto = picFoto.ImageLocation
+        'empleado.Nombre = txtNombre.Text
+        'empleado.Apellido = txtApellido.Text
+        'empleado.Foto = picFoto.ImageLocation
 
-        NegocioEmpleado.ValidarDatos(empleado)
+        'NegocioEmpleado.ValidarDatos(empleado)
 
         'probamos la conexión a la DB'
         NegocioEmpleado.pruebaMySql()
@@ -78,6 +78,9 @@ Public Class frEmpleados
         If (empleado.Id <> 0) Then
             'insertamos los datos en la DB'
             NegocioEmpleado.EliminarEmpleado(empleado)
+
+            'forzamos el click del botón Nuevo
+            btnNuevo.PerformClick()
         Else
             MessageBox.Show("Error al eliminar empleado, contacte con su administrador.", "Error")
         End If
@@ -135,6 +138,12 @@ Public Class frEmpleados
     End Sub
 
     Private Sub gridDatos_RowHeaderMouseDoubleClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles gridDatos.RowHeaderMouseDoubleClick
+        ' Verifica si el clic fue en la última fila en blanco
+        If e.RowIndex = gridDatos.Rows.Count - 1 Then
+            ' Si es la última fila, cancela el doble clic
+            Return
+        End If
+
         'tras hacer doble click en una fila se modificarán los datos
         ReviewBackColor()
 

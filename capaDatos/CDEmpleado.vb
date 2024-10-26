@@ -73,8 +73,8 @@ Public Class CDEmpleado
         Try
             conexion.Open()
             'empleado.Foto se guarda así en la query para añadir los / en la ruta'
-            Dim empleadoFoto As String = MySql.Data.MySqlClient.MySqlHelper.EscapeString(empleado.Foto)
-            Dim query As String = "Delete FROM `empleados` WHERE  `id`=" & empleado.Id & ";"
+            'Dim empleadoFoto As String = MySql.Data.MySqlClient.MySqlHelper.EscapeString(empleado.Foto)
+            Dim query As String = "Delete FROM `empleados` WHERE  `id`='" & empleado.Id & "';"
             Dim comando As New MySqlCommand(query, conexion)
             comando.ExecuteReader() 'ejecutamos el comando delete'
             MessageBox.Show("Contacto eliminado correctamente", "Info", MessageBoxButtons.OK)
